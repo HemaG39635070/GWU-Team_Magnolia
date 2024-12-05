@@ -8,6 +8,7 @@
     2. understanding the satisfaction rates based on the Loyality of customers
     3. Type of travellers, class and Satisfaction rates.
     4. Arrival and departure delays impact on satisfaction
+        (100% Stacked Area chart - x axis Minutes of delay, y - axis frequency of Satisfied/ non-satisfied customers) - Charts for both Arrival deal and departure separately.
     5. Boxplots of Most important reason for satisfaction (Ratings of multiple comfort factors):
         Inflight wifi service                
         Departure/Arrival time convenient    
