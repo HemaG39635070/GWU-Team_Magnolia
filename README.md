@@ -12,13 +12,25 @@ Customer satisfaction is a cornerstone of success in the airline industry. This 
 **Dataset:** The dataset used in this project has been obtained from https://www.kaggle.com/datasets/teejmahal20/airline-passenger-satisfaction/data and contains over 100,000 records of airline passengers. It includes demographic information, flight details, service ratings, and satisfaction outcomes. The data is split into two subsets: training (103,904 records) and testing (25,976 records). However we combined the two datasets in one dataset. 
 
 
+### Key variables include:
 
-Through this project, we aim to find out the effect of different factors on the reach of a video on youtube, so that we can estimate if a brand collaboration with certain channel would meet the reach goals or not. The dataset containing reach impact factors like, subscribers count, has_subtitles, age limit restriction, live content, comments enabled, etc. has been obtained from kaggle. 
+**1. Demographic Information:** Gender, Age, Customer Type (loyal or disloyal).
+**2. Flight Details:** Type of Travel (business or personal), Class, Flight Distance, and delay information.
+**3. Service Ratings:** Inflight wifi, Food and drink, Seat comfort, Online boarding, and others.
+**4. Outcome:** Customer satisfaction (satisfied or neutral/dissatisfied).
 
-Link to the dataset: https://www.kaggle.com/datasets/adampsu/youtube-dislikes-info/code
 
-How can we leverage key factors such as subscriber count, view count, like count, subtitles, age restrictions, live content, and comment settings to accurately predict YouTube marketing reach and ensure brand collaborations achieve their intended audience engagement goals from 2005 to 2022?
+### SMART Questions:
 
-Github repo: 
+1. What are the most influential factors that contribute to customer satisfaction?
+2. How do demographic factors, such as age and gender, affect satisfaction levels?
+3. How do delays and flight-related factors impact customer satisfaction?
 
-Modelling Method: Linear regression to predict the reach count.
+**Methodology:** We will employ various machine learning techniques to analyze and predict customer satisfaction:
+
+**1. Data Preprocessing:** Handle missing values, encode categorical variables, and normalize the data where necessary.
+**2. Exploratory Data Analysis (EDA):** Visualize trends, correlations, and distributions.
+**3. Modeling:** Implement models such as logistic regression, decision trees, or ensemble methods like Random Forest or XGBoost to predict customer satisfaction.
+**4. Evaluation:** Use metrics such as accuracy, precision, recall, and F1-score to evaluate model performance.
+
+
