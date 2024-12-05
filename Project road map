@@ -8,7 +8,21 @@
     2. understanding the satisfaction rates based on the Loyality of customers
     3. Type of travellers, class and Satisfaction rates.
     4. Arrival and departure delays impact on satisfaction
-    5. Boxplots of Most important reason for satisfaction (Ratings of multiple comfort factors)
+    5. Boxplots of Most important reason for satisfaction (Ratings of multiple comfort factors):
+        Inflight wifi service                
+        Departure/Arrival time convenient    
+        Ease of Online booking               
+        Gate location                        
+        Food and drink                       
+        Online boarding                      
+        Seat comfort                         
+        Inflight entertainment               
+        On-board service                     
+        Leg room service                     
+        Baggage handling                     
+        Checkin service                      
+        Inflight service                    
+        Cleanliness
 3. Modelling:
     1. Test - train split
     2. Logistic regression or Random Forest
