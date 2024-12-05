@@ -5,14 +5,13 @@ Predicting Airline Customer Satisfaction: Identifying Key Factors Influencing Cu
 
 ### Proposal:
 
-Top of the Mind Marketing (TOPM) - 
+Customer satisfaction is a cornerstone of success in the airline industry. This project aims to explore and analyze the factors that influence airline customer satisfaction. By identifying key variables, we seek to offer actionable insights to enhance customer experience, streamline operations, and improve service quality.
 
-Marketing is more like understanding the psychology of the user base. TOPM is a widely used strategy across marketing, where brands try to create, build and maintain its image and grow its sales using the impression it created across the market.
-Here are few examples:
-1. When one has to hire a cab, the phrase "Let's uber!" is more used than "Let's take a cab!"
-2. If I say "NIKE", the next thought that follows in one's mind is "Just do it!"
-3. "KFC" - "It's finger lickin' good!"
-These phrases are most heard of and once heard or seen, are settled in one's mind. Hence, the most important factor for marketing is the reach of the advertisement. Identifying the brands market and reaching out to the entire market is important to display brand's presence.
+**Objective:** The primary goal of this project is to predict customer satisfaction using various demographic, service quality, and flight-related variables. We aim to uncover trends and insights that can help airlines optimize their services for different customer segments.
+
+**Dataset:** The dataset used in this project has been obtained from https://www.kaggle.com/datasets/teejmahal20/airline-passenger-satisfaction/data and contains over 100,000 records of airline passengers. It includes demographic information, flight details, service ratings, and satisfaction outcomes. The data is split into two subsets: training (103,904 records) and testing (25,976 records). However we combined the two datasets in one dataset. 
+
+
 
 Through this project, we aim to find out the effect of different factors on the reach of a video on youtube, so that we can estimate if a brand collaboration with certain channel would meet the reach goals or not. The dataset containing reach impact factors like, subscribers count, has_subtitles, age limit restriction, live content, comments enabled, etc. has been obtained from kaggle. 
 
