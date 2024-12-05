@@ -10,39 +10,11 @@ from sklearn import preprocessing
 from sklearn.preprocessing import LabelEncoder
 
 # %%
-df = pd.read_csv("Airline_data.csv")
-
-print(df.head())
-print(df.info())
-# %%
-df.info()
-
-# %%
-df.columns
-
-# %%
-df.describe()
-
-# %%
-df.shape
+df = pd.read_csv("C:/Users/g/OneDrive/Desktop/GWU/202408/DATS 6103 Intro to Data Mining/Mod 3/Project/Airline_data.csv")
 
 # %%
 df=df.drop(['id','Unnamed: 0'],axis=1)
-
-# %%
-df.describe(include = object)
-
-# %%
-df.isnull().sum()
-
-# %%
 df.dropna(subset=['Arrival Delay in Minutes'], inplace=True)
-
-# %%
-df.isnull().any()
-
-# %%
-df.duplicated().any()
 
 # %%
 numeric_columns = df.select_dtypes(include=['number']).columns
@@ -71,11 +43,6 @@ def Outliers(df,col, output_file="df_clean.csv"):
 columns = ['Flight Distance']
 df_cleaned = Outliers(df, columns, output_file="cleaned_Airport_data.csv")
 
-print(df_cleaned.head())
-
-# %%
-df_cleaned.info()
-
 # %%
 columns_to_encode = ["satisfaction","Gender","Customer Type","Type of Travel","Class"]
 
@@ -92,4 +59,99 @@ df_cleaned.head()
 #Satisfaction --> Non Satisfied - 0, Satisfied - 1
 
 # %%
+df_cleaned.head()
+# %%
 
+
+# Service attributes to plot
+service_attributes = [
+    'Inflight wifi service',
+    'Departure/Arrival time convenient',
+    'Ease of Online booking',
+    'Gate location',
+    'Food and drink',
+    'Online boarding',
+    'Seat comfort',
+    'Inflight entertainment',
+    'On-board service',
+    'Leg room service',
+    'Baggage handling',
+    'Checkin service',
+    'Inflight service',
+    'Cleanliness'
+]
+# Create two separate figures for satisfied and non-satisfied customers
+def plot_satisfaction_vertical_boxplots(df):
+    # Satisfied customers (1)
+    plt.figure(figsize=(20, 10))
+    satisfied_df = df[df['satisfaction'] == 1]
+    
+    for i, attr in enumerate(service_attributes, 1):
+        plt.subplot(4, 4, i)
+        sns.boxplot(y=satisfied_df[attr])
+        plt.title(f'Satisfied Customers: {attr}', fontsize=10)
+        plt.ylabel('Rating', fontsize=8)
+        plt.xticks([])  # Remove x-ticks for cleaner look
+    
+    plt.tight_layout()
+    plt.suptitle('Service Attributes for Satisfied Customers', fontsize=16)
+    plt.subplots_adjust(top=0.9)
+    plt.show()
+    
+    # Non-satisfied customers (0)
+    plt.figure(figsize=(20, 10))
+    non_satisfied_df = df[df['satisfaction'] == 0]
+    
+    for i, attr in enumerate(service_attributes, 1):
+        plt.subplot(4, 4, i)
+        sns.boxplot(y=non_satisfied_df[attr])
+        plt.title(f'Non-Satisfied Customers: {attr}', fontsize=10)
+        plt.ylabel('Rating', fontsize=8)
+        plt.xticks([])  # Remove x-ticks for cleaner look
+    
+    plt.tight_layout()
+    plt.suptitle('Service Attributes for Non-Satisfied Customers', fontsize=16)
+    plt.subplots_adjust(top=0.9)
+    plt.show()
+
+# Call the function with your cleaned dataframe
+plot_satisfaction_vertical_boxplots(df_cleaned)
+# %%
+
+# Create two separate figures for satisfied and non-satisfied customers
+def plot_satisfaction_violin_plots(df):
+    # Satisfied customers (1)
+    plt.figure(figsize=(20, 10))
+    satisfied_df = df[df['satisfaction'] == 1]
+    
+    for i, attr in enumerate(service_attributes, 1):
+        plt.subplot(4, 4, i)
+        sns.violinplot(y=satisfied_df[attr])
+        plt.title(f'Satisfied Customers: {attr}', fontsize=10)
+        plt.ylabel('Rating', fontsize=8)
+        plt.xticks([])  # Remove x-ticks for cleaner look
+    
+    plt.tight_layout()
+    plt.suptitle('Service Attributes for Satisfied Customers', fontsize=16)
+    plt.subplots_adjust(top=0.9)
+    plt.show()
+    
+    # Non-satisfied customers (0)
+    plt.figure(figsize=(20, 10))
+    non_satisfied_df = df[df['satisfaction'] == 0]
+    
+    for i, attr in enumerate(service_attributes, 1):
+        plt.subplot(4, 4, i)
+        sns.violinplot(y=non_satisfied_df[attr])
+        plt.title(f'Non-Satisfied Customers: {attr}', fontsize=10)
+        plt.ylabel('Rating', fontsize=8)
+        plt.xticks([])  # Remove x-ticks for cleaner look
+    
+    plt.tight_layout()
+    plt.suptitle('Service Attributes for Non-Satisfied Customers', fontsize=16)
+    plt.subplots_adjust(top=0.9)
+    plt.show()
+
+# Call the function with your cleaned dataframe
+plot_satisfaction_violin_plots(df_cleaned)
+# %%
