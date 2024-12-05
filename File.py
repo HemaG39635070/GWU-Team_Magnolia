@@ -155,3 +155,19 @@ def plot_satisfaction_violin_plots(df):
 # Call the function with your cleaned dataframe
 plot_satisfaction_violin_plots(df_cleaned)
 # %%
+#EDA: Type of travellers, class and Satisfaction rates.
+
+columns_to_plot = ['Type of Travel', 'Class', 'satisfaction']
+
+for column in columns_to_plot:
+    plt.figure(figsize=(6, 6))
+    value_counts = df_cleaned[column].value_counts()
+    value_counts.plot(
+        kind='pie',
+        autopct='%1.1f%%',
+        colors=plt.cm.Paired.colors,
+        startangle=90
+    )
+    plt.title(f'Distribution of {column}')
+    plt.ylabel('')
+    plt.show()
