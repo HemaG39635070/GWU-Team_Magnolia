@@ -1,17 +1,16 @@
 1. Data cleaning: 
     1. Outlier removal (box plot)
-    2. Identify and remove negative values 
-    3. Data type conversions
-    4. Standardize the data
-    5. Date column standardization
-    6. 
+    2. Data type conversions 
+    3. null values
+    4. Encoding
 2. EDA:
-    1. Correlation plots 
-        1. Factors through out the time (Factors to colors, x - axis - date, y - axis - % videos count)
-    2. Scatter plots
-    3. Stacked bar charts
+    1. Age group <-> satisfaction demographics
+    2. understanding the satisfaction rates based on the Loyality of customers
+    3. Type of travellers, class and Satisfaction rates.
+    4. Arrival and departure delays impact on satisfaction
+    5. Boxplots of Most important reason for satisfaction (Ratings of multiple comfort factors)
 3. Modelling:
     1. Test - train split
-    2. Multi variate regression model. (https://www.geeksforgeeks.org/multivariate-regression/) 
+    2. Logistic regression or Random Forest
 4. Model testing
 5. Conclusion:
