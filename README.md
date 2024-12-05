@@ -9,7 +9,7 @@ Customer satisfaction is a cornerstone of success in the airline industry. This 
 
 **Objective:** The primary goal of this project is to predict customer satisfaction using various demographic, service quality, and flight-related variables. We aim to uncover trends and insights that can help airlines optimize their services for different customer segments.
 
-**Dataset:** The dataset used in this project has been obtained from https://www.kaggle.com/datasets/teejmahal20/airline-passenger-satisfaction/data and contains over 100,000 records of airline passengers. It includes demographic information, flight details, service ratings, and satisfaction outcomes. The data is split into two subsets: training (103,904 records) and testing (25,976 records). However we combined the two datasets in one dataset. 
+**Dataset:** We are using a dataset from Kaggle that contains over 100,000 records of airline passengers. It includes demographic details, flight information, service ratings, and satisfaction outcomes. Originally split into training (103,904 records) and testing (25,976 records) subsets, we combined them into one dataset for a more complete analysis.
 
 
 ### Key variables include:
@@ -20,7 +20,7 @@ Customer satisfaction is a cornerstone of success in the airline industry. This 
 **4. Outcome:** Customer satisfaction (satisfied or neutral/dissatisfied).
 
 
-### SMART Questions:
+### Research Questions:
 
 1. What are the most influential factors that contribute to customer satisfaction?
 2. How do demographic factors, such as age and gender, affect satisfaction levels?
@@ -32,5 +32,8 @@ Customer satisfaction is a cornerstone of success in the airline industry. This 
 **2. Exploratory Data Analysis (EDA):** Visualize trends, correlations, and distributions.
 **3. Modeling:** Implement models such as logistic regression, decision trees, or ensemble methods like Random Forest or XGBoost to predict customer satisfaction.
 **4. Evaluation:** Use metrics such as accuracy, precision, recall, and F1-score to evaluate model performance.
+
+### GitHub Repository:
+Team Magnolia Repository
 
 
