@@ -14,13 +14,13 @@ Customer satisfaction is a cornerstone of success in the airline industry. This 
 
 ### Key variables include:
 
-**1. Demographic Information:** Gender, Age, Customer Type (loyal or disloyal).
-**2. Flight Details:** Type of Travel (business or personal), Class, Flight Distance, and delay information.
-**3. Service Ratings:** Inflight wifi, Food and drink, Seat comfort, Online boarding, and others.
-**4. Outcome:** Customer satisfaction (satisfied or neutral/dissatisfied).
+1. Demographic Information: Gender, Age, Customer Type (loyal or disloyal).
+2. Flight Details: Type of Travel (business or personal), Class, Flight Distance, and delay information.
+3. Service Ratings: Inflight wifi, Food and drink, Seat comfort, Online boarding, and others.
+4. Outcome: Customer satisfaction (satisfied or neutral/dissatisfied).
 
 
-### SMART Questions:
+### Project Questions:
 
 1. What are the most influential factors that contribute to customer satisfaction?
 2. How do demographic factors, such as age and gender, affect satisfaction levels?
@@ -28,9 +28,9 @@ Customer satisfaction is a cornerstone of success in the airline industry. This 
 
 **Methodology:** We will employ various machine learning techniques to analyze and predict customer satisfaction:
 
-**1. Data Preprocessing:** Handle missing values, encode categorical variables, and normalize the data where necessary.
-**2. Exploratory Data Analysis (EDA):** Visualize trends, correlations, and distributions.
-**3. Modeling:** Implement models such as logistic regression, decision trees, or ensemble methods like Random Forest or XGBoost to predict customer satisfaction.
-**4. Evaluation:** Use metrics such as accuracy, precision, recall, and F1-score to evaluate model performance.
+1. Data Preprocessing: Handle missing values, encode categorical variables, and normalize the data where necessary.
+2. Exploratory Data Analysis (EDA): Visualize trends, correlations, and distributions.
+3. Modeling: Implement models such as logistic regression, decision trees, or ensemble methods like Random Forest or XGBoost to predict customer satisfaction.
+4. Evaluation: Use metrics such as accuracy, precision, recall, and F1-score to evaluate model performance.
 
 
