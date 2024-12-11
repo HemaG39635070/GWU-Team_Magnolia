@@ -460,3 +460,24 @@ sns.barplot(x='Importance', y='Feature', data=feature_importances)
 plt.title('Feature Importance')
 plt.show()
 
+#%%
+# Hyper parameter Tuning Using GridSearch CV
+
+from sklearn.model_selection import GridSearchCV
+
+param_grid = {
+    'n_estimators': [50, 100, 200],
+    'max_depth': [5, 10, None],
+    'min_samples_split': [2, 5],
+}
+
+grid_search = GridSearchCV(estimator=RandomForestClassifier(random_state=42), param_grid=param_grid, cv=3, n_jobs=-1, verbose=2)
+grid_search.fit(X_train, y_train)
+
+print("Best Parameters:", grid_search.best_params_)
+best_rf_model = grid_search.best_estimator_
+
+y_pred_best_rf = best_rf_model.predict(X_test)
+
+print("Best Random Forest Classification Report:")
+print(classification_report(y_test, y_pred_best_rf))
