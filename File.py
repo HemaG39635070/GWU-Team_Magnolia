@@ -380,3 +380,109 @@ cross_val_scores = cross_val_score(lr_model, X, y, cv=5)
 
 print(f"Cross-validation scores: {cross_val_scores}")
 print(f"Mean cross-validation score: {cross_val_scores.mean()}")
+
+#%%
+# Random Forrest Classification
+
+from sklearn.ensemble import RandomForestClassifier
+
+rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
+rf_model.fit(X_train, y_train)
+
+y_pred_rf = rf_model.predict(X_test)
+
+print("Random Forest Classification Report:")
+print(classification_report(y_test, y_pred_rf))
+print(f"Accuracy: {accuracy_score(y_test, y_pred_rf)}")
+
+#%%
+# Confusion Matrix 
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+
+cm = confusion_matrix(y_test, y_pred_rf)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=rf_model.classes_)
+
+disp.plot(cmap='Blues')
+plt.title('Confusion Matrix')
+plt.show()
+
+#%%
+ROC AUC Curve 
+
+from sklearn.metrics import roc_curve, auc
+
+y_pred_rf_proba = rf_model.predict_proba(X_test)[:, 1]
+
+fpr, tpr, thresholds = roc_curve(y_test, y_pred_rf_proba)
+roc_auc = auc(fpr, tpr)
+
+plt.figure(figsize=(8, 6))
+plt.plot(fpr, tpr, color='blue', label=f'ROC Curve (AUC = {roc_auc:.2f})')
+plt.plot([0, 1], [0, 1], color='gray', linestyle='--')
+plt.xlabel('False Positive Rate (FPR)')
+plt.ylabel('True Positive Rate (TPR)')
+plt.title('ROC-AUC Curve')
+plt.legend()
+plt.show()
+
+#%%
+# Model Evaluation
+
+y_train_pred = rf_model.predict(X_train)
+y_test_pred = rf_model.predict(X_test)
+
+train_accuracy = accuracy_score(y_train, y_train_pred)
+test_accuracy = accuracy_score(y_test, y_test_pred)
+
+print(f"Training Accuracy: {train_accuracy}")
+print(f"Test Accuracy: {test_accuracy}")
+
+#%%
+# Cross Validation
+
+from sklearn.model_selection import cross_val_score
+
+cross_val_scores = cross_val_score(rf_model, X, y, cv=5)
+
+print(f"Cross-validation scores: {cross_val_scores}")
+print(f"Mean cross-validation score: {cross_val_scores.mean()}")
+
+#%%
+# Feature Importance 
+
+feature_importances = pd.DataFrame({
+    'Feature': X_train.columns,
+    'Importance': rf_model.feature_importances_
+}).sort_values(by='Importance', ascending=False)
+
+plt.figure(figsize=(10, 6))
+sns.barplot(x='Importance', y='Feature', data=feature_importances)
+plt.title('Feature Importance')
+plt.show()
+
+#%%
+# Hyper parameter Tuning Using GridSearch CV
+
+from sklearn.model_selection import GridSearchCV
+
+param_grid = {
+    'n_estimators': [50, 100, 200],
+    'max_depth': [5, 10, None],
+    'min_samples_split': [2, 5],
+}
+
+grid_search = GridSearchCV(estimator=RandomForestClassifier(random_state=42), param_grid=param_grid, cv=3, n_jobs=-1, verbose=2)
+grid_search.fit(X_train, y_train)
+
+print("Best Parameters:", grid_search.best_params_)
+best_rf_model = grid_search.best_estimator_
+
+y_pred_best_rf = best_rf_model.predict(X_test)
+
+print("Best Random Forest Classification Report:")
+print(classification_report(y_test, y_pred_best_rf))
+
+#%%
+
+# Conclusion :
+# Comparing both the models performances it is eveident that Random Forrest Classification is the better model in predicting the customer satisfaction.
