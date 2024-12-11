@@ -291,3 +291,18 @@ for i in range(len(corr_matrix.columns)):
 df = df.drop(columns=to_drop)
 
 print("Dropped features due to high correlation:", to_drop)
+
+#%%
+# Train-Test split 
+
+from sklearn.model_selection import train_test_split
+
+
+X = df_01.drop('satisfaction', axis=1)  
+y = df['satisfaction']
+
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+
+print(f"Training set size: {X_train.shape[0]}")
+print(f"Test set size: {X_test.shape[0]}")
