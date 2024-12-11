@@ -239,3 +239,13 @@ plt.title('Satisfaction Distribution')
 plt.xlabel('Distribution')
 plt.ylabel('Frequency')
 plt.show()
+
+#%%
+# Log transformation for positively skewed data
+
+df['Flight Distance'] = df['Flight Distance'].apply(lambda x: np.log(x + 1))
+df['Departure Delay in Minutes'] = df['Departure Delay in Minutes'].apply(lambda x: np.log(x + 1))
+df['Arrival Delay in Minutes'] = df['Arrival Delay in Minutes'].apply(lambda x: np.log(x + 1))
+
+sns.histplot(df['Departure Delay in Minutes'], kde=True)
+plt.show()
