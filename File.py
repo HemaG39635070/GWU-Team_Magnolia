@@ -394,3 +394,14 @@ y_pred_rf = rf_model.predict(X_test)
 print("Random Forest Classification Report:")
 print(classification_report(y_test, y_pred_rf))
 print(f"Accuracy: {accuracy_score(y_test, y_pred_rf)}")
+
+#%%
+# Confusion Matrix 
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+
+cm = confusion_matrix(y_test, y_pred_rf)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=rf_model.classes_)
+
+disp.plot(cmap='Blues')
+plt.title('Confusion Matrix')
+plt.show()
