@@ -249,3 +249,13 @@ df['Arrival Delay in Minutes'] = df['Arrival Delay in Minutes'].apply(lambda x: 
 
 sns.histplot(df['Departure Delay in Minutes'], kde=True)
 plt.show()
+
+#%%
+# Correlation Matrix
+
+numeric_columns = df.select_dtypes(include=['number'])
+corr_matrix = numeric_columns.corr()
+plt.figure(figsize=(12, 8))
+sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5)
+plt.title('Correlation Matrix')
+plt.show()
