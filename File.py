@@ -481,3 +481,8 @@ y_pred_best_rf = best_rf_model.predict(X_test)
 
 print("Best Random Forest Classification Report:")
 print(classification_report(y_test, y_pred_best_rf))
+
+#%%
+
+# Conclusion :
+# Comparing both the models performances it is eveident that Random Forrest Classification is the better model in predicting the customer satisfaction.
