@@ -306,3 +306,21 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 print(f"Training set size: {X_train.shape[0]}")
 print(f"Test set size: {X_test.shape[0]}")
+
+#%%
+# Logistic Regression Model
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report, accuracy_score
+
+
+lr_model = LogisticRegression(max_iter=1000)
+lr_model.fit(X_train, y_train)
+
+
+y_pred_lr = lr_model.predict(X_test)
+
+
+print("Logistic Regression Classification Report:")
+print(classification_report(y_test, y_pred_lr))
+print(f"Accuracy: {accuracy_score(y_test, y_pred_lr)}")
