@@ -358,3 +358,15 @@ plt.ylabel("True Positive Rate (TPR)")
 plt.legend(loc="lower right")
 plt.grid()
 plt.show()
+
+#%%
+# Train and Test prediction 
+
+train_preds = lr_model.predict(X_train)
+test_preds = lr_model.predict(X_test)
+
+train_accuracy = accuracy_score(y_train, train_preds)
+test_accuracy = accuracy_score(y_test, test_preds)
+
+print(f"Training Accuracy: {train_accuracy}")
+print(f"Test Accuracy: {test_accuracy}")
