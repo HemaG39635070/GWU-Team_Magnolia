@@ -259,3 +259,19 @@ plt.figure(figsize=(12, 8))
 sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5)
 plt.title('Correlation Matrix')
 plt.show()
+
+#%%
+# Variance Inflation Factor
+
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+from statsmodels.tools.tools import add_constant
+
+numeric_columns = df.select_dtypes(include=['number'])
+
+X = add_constant(numeric_columns)
+
+vif_data = pd.DataFrame()
+vif_data['Feature'] = X.columns
+vif_data['VIF'] = [variance_inflation_factor(X.values, i) for i in range(X.shape[1])]
+
+print(vif_data)
