@@ -380,3 +380,17 @@ cross_val_scores = cross_val_score(lr_model, X, y, cv=5)
 
 print(f"Cross-validation scores: {cross_val_scores}")
 print(f"Mean cross-validation score: {cross_val_scores.mean()}")
+
+#%%
+# Random Forrest Classification
+
+from sklearn.ensemble import RandomForestClassifier
+
+rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
+rf_model.fit(X_train, y_train)
+
+y_pred_rf = rf_model.predict(X_test)
+
+print("Random Forest Classification Report:")
+print(classification_report(y_test, y_pred_rf))
+print(f"Accuracy: {accuracy_score(y_test, y_pred_rf)}")
