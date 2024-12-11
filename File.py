@@ -405,3 +405,22 @@ disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=rf_model.class
 disp.plot(cmap='Blues')
 plt.title('Confusion Matrix')
 plt.show()
+
+#%%
+ROC AUC Curve 
+
+from sklearn.metrics import roc_curve, auc
+
+y_pred_rf_proba = rf_model.predict_proba(X_test)[:, 1]
+
+fpr, tpr, thresholds = roc_curve(y_test, y_pred_rf_proba)
+roc_auc = auc(fpr, tpr)
+
+plt.figure(figsize=(8, 6))
+plt.plot(fpr, tpr, color='blue', label=f'ROC Curve (AUC = {roc_auc:.2f})')
+plt.plot([0, 1], [0, 1], color='gray', linestyle='--')
+plt.xlabel('False Positive Rate (FPR)')
+plt.ylabel('True Positive Rate (TPR)')
+plt.title('ROC-AUC Curve')
+plt.legend()
+plt.show()
