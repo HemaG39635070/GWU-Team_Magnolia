@@ -306,3 +306,77 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 print(f"Training set size: {X_train.shape[0]}")
 print(f"Test set size: {X_test.shape[0]}")
+
+#%%
+# Logistic Regression Model
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report, accuracy_score
+
+
+lr_model = LogisticRegression(max_iter=1000)
+lr_model.fit(X_train, y_train)
+
+
+y_pred_lr = lr_model.predict(X_test)
+
+
+print("Logistic Regression Classification Report:")
+print(classification_report(y_test, y_pred_lr))
+print(f"Accuracy: {accuracy_score(y_test, y_pred_lr)}")
+
+
+#%%
+# confusion matrix 
+
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+
+cm = confusion_matrix(y_test, y_pred_lr)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=lr_model.classes_)
+
+disp.plot(cmap='Blues')
+plt.title('Confusion Matrix')
+plt.show()
+
+#%%
+# ROC AUC Curve
+
+from sklearn.metrics import roc_curve, roc_auc_score
+
+y_pred_prob = lr_model.predict_proba(X_test)[:, 1]
+
+fpr, tpr, thresholds = roc_curve(y_test, y_pred_prob)
+
+auc_score = roc_auc_score(y_test, y_pred_prob)
+
+plt.figure(figsize=(8, 6))
+plt.plot(fpr, tpr, color='blue', label=f'ROC Curve (AUC = {auc_score:.2f})')
+plt.plot([0, 1], [0, 1], color='red', linestyle='--', label='Random Guess')
+plt.title("Receiver Operating Characteristic (ROC) Curve")
+plt.xlabel("False Positive Rate (FPR)")
+plt.ylabel("True Positive Rate (TPR)")
+plt.legend(loc="lower right")
+plt.grid()
+plt.show()
+
+#%%
+# Train and Test prediction 
+
+train_preds = lr_model.predict(X_train)
+test_preds = lr_model.predict(X_test)
+
+train_accuracy = accuracy_score(y_train, train_preds)
+test_accuracy = accuracy_score(y_test, test_preds)
+
+print(f"Training Accuracy: {train_accuracy}")
+print(f"Test Accuracy: {test_accuracy}")
+
+#%%
+# Cross Validation
+
+from sklearn.model_selection import cross_val_score
+
+cross_val_scores = cross_val_score(lr_model, X, y, cv=5)
+
+print(f"Cross-validation scores: {cross_val_scores}")
+print(f"Mean cross-validation score: {cross_val_scores.mean()}")
