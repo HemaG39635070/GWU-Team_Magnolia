@@ -446,3 +446,17 @@ cross_val_scores = cross_val_score(rf_model, X, y, cv=5)
 
 print(f"Cross-validation scores: {cross_val_scores}")
 print(f"Mean cross-validation score: {cross_val_scores.mean()}")
+
+#%%
+# Feature Importance 
+
+feature_importances = pd.DataFrame({
+    'Feature': X_train.columns,
+    'Importance': rf_model.feature_importances_
+}).sort_values(by='Importance', ascending=False)
+
+plt.figure(figsize=(10, 6))
+sns.barplot(x='Importance', y='Feature', data=feature_importances)
+plt.title('Feature Importance')
+plt.show()
+
