@@ -214,3 +214,18 @@ chi2, p, dof, expected = chi2_contingency(contingency_table_loyalty)
 print(f"Chi-square test p-value: {p}")
 
 # Observation :The p-value of 0 indicates that these variables are statistically significant .git
+
+#%%
+# Continous variable distribution to analyse if the predictors are heavily skewed 
+
+continuous_variables = ['Age', 'Flight Distance', 'Departure Delay in Minutes', 'Arrival Delay in Minutes']  
+
+plt.figure(figsize=(12, 8))
+for i, var in enumerate(continuous_variables, 1):
+    plt.subplot(2, 2, i)
+    sns.histplot(df[var], kde=True, bins=30, color='skyblue', edgecolor='black')
+    plt.title(f'Distribution of {var}')
+    plt.xlabel(var)
+    plt.ylabel('Frequency')
+plt.tight_layout()
+plt.show()
