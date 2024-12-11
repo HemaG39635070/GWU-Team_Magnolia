@@ -229,3 +229,13 @@ for i, var in enumerate(continuous_variables, 1):
     plt.ylabel('Frequency')
 plt.tight_layout()
 plt.show()
+
+#%%
+# Target Variable distribution
+
+plt.figure(figsize=(10, 6))
+sns.countplot(data=df, x='satisfaction', palette='coolwarm')
+plt.title('Satisfaction Distribution')
+plt.xlabel('Distribution')
+plt.ylabel('Frequency')
+plt.show()
