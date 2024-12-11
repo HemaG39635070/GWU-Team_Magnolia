@@ -171,3 +171,46 @@ for column in columns_to_plot:
     plt.title(f'Distribution of {column}')
     plt.ylabel('')
     plt.show()
+
+#%%
+# EDA : Analysing the satisfaction and dissatisfaction rate for different Age groups.
+
+bins = [0, 18, 30, 40, 50, 60, 100]  
+labels = ['<18', '18-30', '31-40', '41-50', '51-60', '60+']
+df['Age Group'] = pd.cut(df['Age'], bins=bins, labels=labels, right=False)
+
+plt.figure(figsize=(10, 6))
+sns.countplot(data=df, x='Age Group', hue='satisfaction', palette='coolwarm')
+plt.title('Satisfaction Rates by Age Group')
+plt.xlabel('Age Group')
+plt.ylabel('Number of Passengers')
+plt.show()
+
+# Observation : Passengers between the ages of 18 and 30 are the most dissatisfied, while those between the ages of 41 and 50 are the most satisfied.
+
+#%%
+# Analysing the satisfaction between the loyal and disloyal customers.
+
+plt.figure(figsize=(10, 6))
+sns.countplot(data=df, x='Customer Type', hue='satisfaction', palette='coolwarm')
+plt.title('Satisfaction Rates by Customer Loyalty')
+plt.xlabel('Customer Type')
+plt.ylabel('Number of Passengers')
+plt.show()
+
+#Observation : It is evident that the percentage of dissatisfied customers is considerable for both loyal and disloyal customers. This raises the question of whether loyalty influences satisfaction.
+
+#%%
+# Statistical testing on loyalty and Age group
+
+from scipy.stats import chi2_contingency
+
+contingency_table_age = pd.crosstab(df['Age'], df['satisfaction'])
+chi2, p, dof, expected = chi2_contingency(contingency_table_age)
+print(f"Chi-square test p-value: {p}")
+
+contingency_table_loyalty = pd.crosstab(df['Customer Type'], df['satisfaction'])
+chi2, p, dof, expected = chi2_contingency(contingency_table_loyalty)
+print(f"Chi-square test p-value: {p}")
+
+# Observation :The p-value of 0 indicates that these variables are statistically significant .git
