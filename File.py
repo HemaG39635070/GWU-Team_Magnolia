@@ -275,3 +275,19 @@ vif_data['Feature'] = X.columns
 vif_data['VIF'] = [variance_inflation_factor(X.values, i) for i in range(X.shape[1])]
 
 print(vif_data)
+
+#%%
+# Drop highly correlated variable
+
+to_drop = set()
+
+threshold = 0.8  
+for i in range(len(corr_matrix.columns)):
+    for j in range(i):
+        if abs(corr_matrix.iloc[i, j]) > threshold:
+            colname = corr_matrix.columns[i]  
+            to_drop.add(colname)
+
+df = df.drop(columns=to_drop)
+
+print("Dropped features due to high correlation:", to_drop)
