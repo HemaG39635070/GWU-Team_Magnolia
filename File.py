@@ -370,3 +370,13 @@ test_accuracy = accuracy_score(y_test, test_preds)
 
 print(f"Training Accuracy: {train_accuracy}")
 print(f"Test Accuracy: {test_accuracy}")
+
+#%%
+# Cross Validation
+
+from sklearn.model_selection import cross_val_score
+
+cross_val_scores = cross_val_score(lr_model, X, y, cv=5)
+
+print(f"Cross-validation scores: {cross_val_scores}")
+print(f"Mean cross-validation score: {cross_val_scores.mean()}")
