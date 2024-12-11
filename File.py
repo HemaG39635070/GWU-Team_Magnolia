@@ -154,23 +154,38 @@ def plot_satisfaction_violin_plots(df):
 
 # Call the function with your cleaned dataframe
 plot_satisfaction_violin_plots(df_cleaned)
+
 # %%
 #EDA: Type of travellers, class and Satisfaction rates.
 
-columns_to_plot = ['Type of Travel', 'Class', 'satisfaction']
+def plot_pie_charts(df, columns):
+    """
+    Generates pie charts for the given columns in a DataFrame.
 
-for column in columns_to_plot:
-    plt.figure(figsize=(6, 6))
-    value_counts = df_cleaned[column].value_counts()
-    value_counts.plot(
-        kind='pie',
-        autopct='%1.1f%%',
-        colors=plt.cm.Paired.colors,
-        startangle=90
-    )
-    plt.title(f'Distribution of {column}')
-    plt.ylabel('')
-    plt.show()
+    Parameters:
+        df (DataFrame): The input DataFrame.
+        columns (list): List of column names to generate pie charts for.
+    """
+    for column in columns:
+        plt.figure(figsize=(6, 6))
+        value_counts = df[column].value_counts()
+        value_counts.plot(
+            kind='pie',
+            autopct='%1.1f%%',
+            colors=plt.cm.Paired.colors,
+            startangle=90
+        )
+        plt.title(f'Distribution of {column}')
+        plt.ylabel('')
+        plt.show()
+
+columns_to_plot = ['Type of Travel', 'Class', 'satisfaction']
+plot_pie_charts(df_cleaned, columns_to_plot)
+
+'''Observation: 
+Type of Travel: Most travelers (68.4%) belong to Business Travel, indicating a dominant travel type.
+Class: Classes Business and Economy are nearly equal in distribution (46.7% and 45.9%), with class Economy Plus being minimal (7.4%).
+Satisfaction: A higher proportion of travelers are dissatisfied (57.3%) compared to satisfied (42.7%).'''
 
 #%%
 # EDA : Analysing the satisfaction and dissatisfaction rate for different Age groups.
