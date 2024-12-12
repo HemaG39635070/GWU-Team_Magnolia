@@ -167,9 +167,9 @@ columns_to_plot = ['Type of Travel', 'Class', 'satisfaction']
 plot_pie_charts(df_cleaned, columns_to_plot)
 
 '''Observation: 
-Type of Travel: Most travelers (68.4%) belong to Business Travel, indicating a dominant travel type.
-Class: Classes Business and Economy are nearly equal in distribution (46.7% and 45.9%), with class Economy Plus being minimal (7.4%).
-Satisfaction: A higher proportion of travelers are dissatisfied (57.3%) compared to satisfied (42.7%).'''
+Type of Travel: Most travelers (68.2%) belong to Business Travel, indicating a dominant travel type.
+Class: Classes Business and Economy are nearly equal in distribution (48.9% and 44.1%), with class Economy Plus being minimal (6.9%).
+Satisfaction: A higher proportion of travelers are dissatisfied (54.6%) compared to satisfied (45.4%).'''
 
 #%%
 # Analysing the satisfaction and dissatisfaction rate for different Age groups.
@@ -528,6 +528,12 @@ print(classification_report(y_test, y_pred_best_rf))
 #%%
 
 '''Conclusion:
+The features that highly influence the Model are:
+Online boarding 
+Inflight wifi service
+Type of travel 
+Class
+
 Comparing both the models performances it is eveident that Random Forrest Classification is the 
 better model in predicting the customer satisfaction.'''
 
