@@ -1,4 +1,6 @@
 #%%
+# Important Libraries
+
 import pandas as pd
 import numpy as np
 
@@ -10,13 +12,18 @@ from sklearn import preprocessing
 from sklearn.preprocessing import LabelEncoder
 
 # %%
-df = pd.read_csv("C:/Users/g/OneDrive/Desktop/GWU/202408/DATS 6103 Intro to Data Mining/Team Magnolia/Airline_data.csv")
+# Dataset
+
+df = pd.read_csv("Airline_data.csv")
 
 # %%
 df=df.drop(['id','Unnamed: 0'],axis=1)
 df.dropna(subset=['Arrival Delay in Minutes'], inplace=True)
 
 #%%
+'''
+Before
+'''
 numeric_columns = df.select_dtypes(include=['number']).columns
 plt.figure(figsize=(20, 12))  
 grid = plt.GridSpec(nrows=int(np.ceil(len(numeric_columns) / 4)), ncols=4, wspace=0.4, hspace=0.3)  # Dynamic grid layout
@@ -31,6 +38,7 @@ plt.tight_layout()
 plt.show()
 
 # %%
+# Outlier Removal
 
 def Outliers(df,col):
     Q1 = df[col].quantile(q=0.25)
@@ -44,8 +52,6 @@ def Outliers(df,col):
 
 columns = ['Flight Distance','Checkin service']
 df_cleaned = Outliers(df, columns)
-
-#%%
 
 #%%
 '''
@@ -81,16 +87,11 @@ for col in columns_to_encode:
     le = preprocessing.LabelEncoder()
     df_cleaned[col] = le.fit_transform(df_cleaned[col])
     l = list(le.classes_)
-df_cleaned.head()
-
-
 
 # %%
 df_cleaned.head()
 # %%
 
-
-# Service attributes to plot
 service_attributes = [
     'Inflight wifi service',
     'Departure/Arrival time convenient',
@@ -108,6 +109,8 @@ service_attributes = [
     'Cleanliness'
 ]
 # %%
+# Most important reason for satisfaction
+
 def plot_satisfaction_violin_plots(df):
     # Satisfied customers (1)
     plt.figure(figsize=(20, 10))
@@ -118,7 +121,7 @@ def plot_satisfaction_violin_plots(df):
         sns.violinplot(y=satisfied_df[attr])
         plt.title(f'Satisfied Customers: {attr}', fontsize=10)
         plt.ylabel('Rating', fontsize=8)
-        plt.xticks([])  # Remove x-ticks for cleaner look
+        plt.xticks([])
     
     plt.tight_layout()
     plt.suptitle('Service Attributes for Satisfied Customers', fontsize=16)
@@ -134,18 +137,17 @@ def plot_satisfaction_violin_plots(df):
         sns.violinplot(y=non_satisfied_df[attr])
         plt.title(f'Non-Satisfied Customers: {attr}', fontsize=10)
         plt.ylabel('Rating', fontsize=8)
-        plt.xticks([])  # Remove x-ticks for cleaner look
+        plt.xticks([])
     
     plt.tight_layout()
     plt.suptitle('Service Attributes for Non-Satisfied Customers', fontsize=16)
     plt.subplots_adjust(top=0.9)
     plt.show()
 
-# Call the function with your cleaned dataframe
 plot_satisfaction_violin_plots(df_cleaned)
 
 # %%
-#EDA: Type of travellers, class and Satisfaction rates.
+# Type of travellers, class and Satisfaction rates.
 
 def plot_pie_charts(df, columns):
     for column in columns:
@@ -167,11 +169,10 @@ plot_pie_charts(df_cleaned, columns_to_plot)
 '''Observation: 
 Type of Travel: Most travelers (68.4%) belong to Business Travel, indicating a dominant travel type.
 Class: Classes Business and Economy are nearly equal in distribution (46.7% and 45.9%), with class Economy Plus being minimal (7.4%).
-Satisfaction: A higher proportion of travelers are dissatisfied (57.3%) compared to satisfied (42.7%).
-'''
+Satisfaction: A higher proportion of travelers are dissatisfied (57.3%) compared to satisfied (42.7%).'''
 
 #%%
-# EDA : Analysing the satisfaction and dissatisfaction rate for different Age groups.
+# Analysing the satisfaction and dissatisfaction rate for different Age groups.
 
 bins = [0, 18, 30, 40, 50, 60, 100]  
 labels = ['<18', '18-30', '31-40', '41-50', '51-60', '60+']
@@ -184,7 +185,9 @@ plt.xlabel('Age Group')
 plt.ylabel('Number of Passengers')
 plt.show()
 
-# Observation : Passengers between the ages of 18 and 30 are the most dissatisfied, while those between the ages of 41 and 50 are the most satisfied.
+'''Observation : 
+Passengers between the ages of 18 and 30 are the most dissatisfied, 
+while those between the ages of 41 and 50 are the most satisfied.'''
 
 #%%
 # Analysing the satisfaction between the loyal and disloyal customers.
@@ -196,7 +199,8 @@ plt.xlabel('Customer Type')
 plt.ylabel('Number of Passengers')
 plt.show()
 
-#Observation : It is evident that the percentage of dissatisfied customers is considerable for both loyal and disloyal customers. This raises the question of whether loyalty influences satisfaction.
+'''Observation : It is evident that the percentage of dissatisfied customers is considerable for both loyal and 
+disloyal customers. This raises the question of whether loyalty influences satisfaction.'''
 
 #%%
 # Statistical testing on loyalty and Age group
@@ -211,7 +215,7 @@ contingency_table_loyalty = pd.crosstab(df_cleaned['Customer Type'], df_cleaned[
 chi2, p, dof, expected = chi2_contingency(contingency_table_loyalty)
 print(f"Chi-square test p-value: {p}")
 
-# Observation :The p-value of 0 indicates that these variables are statistically significant .git
+'''Observation :The p-value of 0 indicates that these variables are statistically significant .git'''
 
 # #%%
 # # Continous variable distribution to analyse if the predictors are heavily skewed 
@@ -298,7 +302,7 @@ print(f"Training set size: {X_train.shape[0]}")
 print(f"Test set size: {X_test.shape[0]}")
 
 #%%
-# Logistic Regression Model
+# Logistic Regression Model 1
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, accuracy_score
@@ -327,7 +331,7 @@ print(model_coefficients)
 
 
 #%%
-# confusion matrix 
+# Confusion Matrix 
 
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
@@ -339,6 +343,8 @@ plt.title('Confusion Matrix')
 plt.show()
 
 #%%
+# Logistic Regression Model 2
+
 lr_model_2 = LogisticRegression(max_iter=1000)
 X_train_2 = X_train[['Customer Type','Type of Travel']]
 X_test_2 = X_test[['Customer Type','Type of Travel']]
@@ -352,7 +358,6 @@ print("Logistic Regression Classification Report:")
 print(classification_report(y_test, y_pred_lr))
 print(f"Accuracy: {accuracy_score(y_test, y_pred_lr)}")
 
-
 #%%
 model_coefficients = pd.DataFrame({
     'Feature': X_train_2.columns,
@@ -362,9 +367,8 @@ model_coefficients = pd.DataFrame({
 
 print(model_coefficients)
 
-
 #%%
-# confusion matrix 
+# Confusion Matrix 
 
 cm = confusion_matrix(y_test, y_pred_lr)
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=lr_model_2.classes_)
@@ -374,7 +378,7 @@ plt.title('Confusion Matrix')
 plt.show()
 
 #%%
-# ROC AUC Curve
+# ROC / AUC Curve
 
 from sklearn.metrics import roc_curve, roc_auc_score
 
@@ -432,6 +436,7 @@ print(f"Accuracy: {accuracy_score(y_test, y_pred_rf)}")
 
 #%%
 # Confusion Matrix 
+
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
 cm = confusion_matrix(y_test, y_pred_rf)
@@ -442,9 +447,7 @@ plt.title('Confusion Matrix')
 plt.show()
 
 #%%
-'''
-ROC AUC Curve 
-'''
+# ROC / AUC Curve
 
 from sklearn.metrics import roc_curve, auc
 
@@ -524,5 +527,8 @@ print(classification_report(y_test, y_pred_best_rf))
 
 #%%
 
-# Conclusion :
-# Comparing both the models performances it is eveident that Random Forrest Classification is the better model in predicting the customer satisfaction.
+'''Conclusion:
+Comparing both the models performances it is eveident that Random Forrest Classification is the 
+better model in predicting the customer satisfaction.'''
+
+# %%
