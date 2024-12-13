@@ -469,6 +469,18 @@ print("Best Random Forest Classification Report:")
 print(classification_report(y_test, y_pred_best_rf))
 
 #%%
+# Train and Test accuracy after tuning the model
+
+y_train_pred_1 = best_rf_model.predict(X_train)
+y_test_pred_1 = best_rf_model.predict(X_test)
+
+train_accuracy_1 = accuracy_score(y_train, y_train_pred_1)
+test_accuracy_1 = accuracy_score(y_test, y_test_pred_1)
+
+print(f"Training Accuracy: {train_accuracy_1}")
+print(f"Test Accuracy: {test_accuracy_1}")
+
+#%%
 
 '''Conclusion:
 The features that highly influence the Model are:
