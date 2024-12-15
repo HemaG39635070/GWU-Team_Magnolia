@@ -1,0 +1,38 @@
+Format for final submission: (total 5000 words)
+
+1. Introduction
+  a. General introduction
+  b. Why did your team choose this topic?
+  c. What prior research and analysis have been done on this topic?
+2. About the dataset
+ a. Data source
+ b. About the columns
+3. Data cleaning
+4. EDAs and conclusions
+ a. About the loyalty (mentioned by Divya)
+5. Target variable distribution
+6. Variance Inflation factor:
+ a. What is VIF
+ b. Analysis from VIF
+ c. which column is dropped?
+ d. Why the column is dropped?
+7. Correlation matrix and analysis
+8. Modelling:
+ a. Logistic regression
+   i) What is logistic regression
+   ii) Dataset split
+   iii) features used to build the model
+   iv) About the confusion matrix
+   v) Observations from Classification report
+   vi) Observations from ROC-AUC curve
+ *b. Random forrest classification 
+     1. What is Random Forrest classification
+     2. about feature importance graph
+     3.  ⁠Model built and about the confusion matrix
+     4. ⁠A point on overfitting 
+     5. ⁠Application of Hyper parameter tuning in the model(GridsearchCV) ⁠
+     6. about Cross validation to check tuned model performance in different folds and confirm no overfitting.
+     7. ROC- AUC graph about the tuned model 
+     8. Why is Feature importance done after model building (Divya's question)
+9. Conclusions
+10. References
