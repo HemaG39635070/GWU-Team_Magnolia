@@ -1,0 +1,29 @@
+Slide 10:
+
+Let’s analyze the key distribution trends among the travelers.
+
+Travel Type: A significant majority, 68.2%, are Business Travelers, indicating the dominant travel purpose.
+Class Distribution: Business and Economy classes are almost equally preferred, with 48.9% and 44.1%, respectively, while Economy Plus is less preferred at just 6.9%.
+Satisfaction Levels: Interestingly, 54.6% of passengers report dissatisfaction, highlighting a need for improvement in overall customer experience.
+
+Slide 11:
+
+Now Let’s take a look at satisfaction across age groups:
+
+Passengers aged 18-30 have the highest dissatisfaction, suggesting their expectations may not be met.
+On the other hand, Passengers aged 41-50 report the highest satisfaction, indicating strong alignment with their needs.
+
+Slide 22:
+
+We did feature selection and these are the top features that are influencing our model: Online Boarding, Inflight Wifi service, Type of travel, and class of service.
+
+Conclusion slide:
+
+So we can conclude that these factors play a huge role in driving the model's accuracy. 
+First, online boarding stands out because passengers really appreciate a smooth, hassle-free check-in process. 
+Then, inflight WiFi is a game-changer—people want to stay connected, especially on longer flights, and that boosts satisfaction. 
+When it comes to the type of travel, business travelers are a big focus since they usually expect more comfort and convenience, making their experience a key factor in overall satisfaction. 
+Lastly, the class of service speaks for itself—premium classes with better seats, food, and service naturally lead to happier customers.
+
+After analyzing both models, it is clear that the Random Forest Classifier performs better in predicting customer satisfaction.
+
