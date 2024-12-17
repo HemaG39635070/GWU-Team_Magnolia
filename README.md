@@ -10,7 +10,7 @@ Customer satisfaction is a cornerstone of success in the airline industry. This 
 
 **Dataset:** The dataset used in this project has been obtained from kaggle and contains over 100,000 records of airline passengers. It includes demographic information, flight details, service ratings, and satisfaction outcomes.
 
-Key variables include:
+Key variables include:   
 
 1. Demographic Information: Gender, Age, Customer Type (loyal or disloyal).
 2. Flight Details: Type of Travel (business or personal), Class, Flight Distance, and delay information.
