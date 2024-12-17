@@ -1,5 +1,5 @@
 # Team 1: 
-## Hema Puchakayala, Darsini Lakshmiah, Hussain Nathani, Halima Albalushi 
+## Hema Puchakayala, Darsini Lakshmiah, Hussain Nathani, Halima Al balushi 
 
 Predicting airline customer satisfaction: Exploring key factors influencing customer experience and using the learnings to predict the customer satisfactory response. 
 
